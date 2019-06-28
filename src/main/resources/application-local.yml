@@ -1,0 +1,14 @@
+#SSL
+server.port: 8080
+server:
+  ssl:
+    enabled: false
+
+#SPRING
+spring:
+  profiles:
+    active: local
+  datasource:
+    url: jdbc:mysql://localhost:3306/graphQlClaims?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password: UX303lb#

@@ -1,0 +1,12 @@
+# IN MEMORY DATASOURCE
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:claimPayments;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL
+  jpa:
+    hibernate:
+      ddl-auto: create
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  liquibase:
+    change-log: classpath:/liquibase/liquibase-changelog.xml
