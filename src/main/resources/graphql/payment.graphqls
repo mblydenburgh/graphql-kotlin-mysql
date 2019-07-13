@@ -1,0 +1,13 @@
+type Payment {
+    paymentNumber: String!
+    claimId: String!
+    claimantFullName: String!
+}
+
+extend type Query {
+    getPaymentByNumber(num: String!): [Payment]!
+}
+
+type Mutation {
+    addNewPayment(paymentNum: String!, claimId: String!, claimantFullName: String!): Payment!
+}

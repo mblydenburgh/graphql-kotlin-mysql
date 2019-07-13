@@ -16,8 +16,5 @@ data class Claim (
     val claimId: String,
 
     @Column
-    val paymentNumber: String,
-
-    @Column
     val lossDate: String
 )

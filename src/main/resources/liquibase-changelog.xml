@@ -27,4 +27,7 @@
     <changeSet author="n0364359 (generated)" id="1561562394982-4" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
         <addPrimaryKey columnNames="id" constraintName="paymentsPK" tableName="payments"/>
     </changeSet>
+    <changeSet id="refactor-tables" author="n0364359">
+        <dropColumn tableName="claims" columnName="paymentNumber" />
+    </changeSet>
 </databaseChangeLog>

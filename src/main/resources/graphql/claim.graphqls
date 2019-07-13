@@ -1,0 +1,13 @@
+type Claim {
+    claimId: String!
+    lossDate: String!
+}
+
+type Query {
+    getClaimById(id: String!): [Claim]!
+}
+
+extend type Mutation {
+    newClaim(claimId: String!, lossDate: String!): Claim!
+    removeClaim(claimId: String!): Claim!
+}
