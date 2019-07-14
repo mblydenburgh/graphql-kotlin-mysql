@@ -1,10 +1,7 @@
 package com.grm.ah.cerberus.graphqlkotlinmysql.dao.entities
 
 import java.util.*
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 
 @Entity
 @Table(name = "payments")
@@ -19,5 +16,9 @@ data class Payment (
     val claimId: String,
 
     @Column
-    val claimantFullName: String
+    val claimantFullName: String,
+
+    @ManyToOne
+    @JoinColumn(name = "claimId", insertable = false, updatable = false)
+    val claim: Claim? = null
 )

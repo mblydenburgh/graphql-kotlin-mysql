@@ -15,6 +15,6 @@ data class Claim (
     @Column
     val lossDate: String,
 
-    @OneToMany(targetEntity = Payment::class, mappedBy = "claimId")
+    @OneToMany(mappedBy = "claimId")
     val payments: List<Payment>? = null
 )

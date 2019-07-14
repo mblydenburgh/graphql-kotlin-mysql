@@ -8,5 +8,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class ClaimResolver(private val paymentRepositoryImpl: PaymentRepositoryImpl): GraphQLResolver<Claim> {
-    fun payments(claimId: String): List<Payment> = paymentRepositoryImpl.getPaymentByClaimId(claimId)
+    fun payments(claim: Claim,claimId: String): List<Payment>? {
+        return paymentRepositoryImpl.getPaymentByClaimId(claimId)
+    }
 }
