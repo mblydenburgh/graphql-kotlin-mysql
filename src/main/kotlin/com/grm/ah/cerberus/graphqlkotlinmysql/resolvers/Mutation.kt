@@ -10,9 +10,9 @@ import com.grm.ah.cerberus.graphqlkotlinmysql.dto.PaymentDto
 import org.springframework.stereotype.Component
 
 @Component
-class PaymentMutationResolver(
-    private val paymentRepositoryImpl: PaymentRepositoryImpl,
-    private val claimRepositoryImpl: ClaimRepositoryImpl
+class Mutation(
+    private val claimRepositoryImpl: ClaimRepositoryImpl,
+    private val paymentRepositoryImpl: PaymentRepositoryImpl
 ): GraphQLMutationResolver {
     fun addNewPayment(paymentNum: String, claimId: String, claimantFullName: String): Payment {
         val newPaymentDto = buildPaymentDto(
