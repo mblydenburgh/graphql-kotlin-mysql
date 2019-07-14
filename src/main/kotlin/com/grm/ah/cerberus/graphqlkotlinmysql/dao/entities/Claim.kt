@@ -1,10 +1,7 @@
 package com.grm.ah.cerberus.graphqlkotlinmysql.dao.entities
 
 import java.util.*
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 
 @Entity
 @Table(name = "claims")
@@ -16,5 +13,8 @@ data class Claim (
     val claimId: String,
 
     @Column
-    val lossDate: String
+    val lossDate: String,
+
+    @OneToMany(targetEntity = Payment::class, mappedBy = "claimId")
+    val payments: List<Payment>? = null
 )

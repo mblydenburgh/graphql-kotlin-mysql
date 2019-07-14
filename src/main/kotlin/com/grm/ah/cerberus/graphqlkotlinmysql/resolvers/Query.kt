@@ -12,8 +12,12 @@ class Query(
     private val claimRepositoryImpl: ClaimRepositoryImpl,
     private val paymentRepositoryImpl: PaymentRepositoryImpl
 ): GraphQLQueryResolver {
-    fun getPaymentByNumber(num: String): List<Payment>{
+    fun getPaymentByNumber(num: String): List<Payment> {
         return paymentRepositoryImpl.getPaymentByNumber(num = num)
+    }
+
+    fun getPaymentByClaimId(claimId: String): List<Payment> {
+        return paymentRepositoryImpl.getPaymentByClaimId(claimId)
     }
 
     fun getClaimById(id: String): List<Claim> {

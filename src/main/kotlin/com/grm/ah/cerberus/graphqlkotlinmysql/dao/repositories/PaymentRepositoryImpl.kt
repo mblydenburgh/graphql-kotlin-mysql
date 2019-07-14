@@ -24,6 +24,10 @@ class PaymentRepositoryImpl {
         return repository.getPaymentByPaymentNumber(paymentNum = num)
     }
 
+    fun getPaymentByClaimId(claimId: String): List<Payment> {
+        return repository.getPaymentByClaimId(claimId)
+    }
+
     fun addNewPayment(paymentDto: PaymentDto): Payment {
         val newPayment = mapDtoToPayment(paymentDto)
         return repository.save(newPayment)
