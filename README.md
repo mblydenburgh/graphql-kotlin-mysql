@@ -1,8 +1,6 @@
 # Graphql-Kotlin-MySQL
 A demo showing how to set up a GraphQL API backed by Liquibase + MySQL. This is a work in progress and is a product of my learning. Hopefully it it helpful to others trying to accomplish the same!
 
-Currently, querying payments by claimId does not work, and is causing querying the payments of returned claims to also fail. Hopefully this is resolved shortly!
-
 NoSQL more your thing? Check out the [MongoDB version](https://github.com/mikebly/graphql-kotlin-mongo) of this demo!
 
 ### Getting Started
@@ -112,12 +110,26 @@ mutation{
 }
   
 query{
-  getClaimById(id:"C1234"){
-    claimId:claimId
-  }
-  getPaymentByNumber(num:"P1234"){
-    paymentNumber:paymentNumber
-  }
+  getAllClaims{
+      claimId
+      lossDate
+    }
+    
+    getAllPayments{
+      paymentNumber
+      claimantFullName
+    }
+    
+    getClaimById(id:"C1234"){
+      lossDate
+      payments(claimId:"C1234"){
+        paymentNumber
+      }
+    }
+
+    getPaymentsByClaimId(claimId:"C1234"){
+       paymentNumber
+    }
 }
   
 ```
