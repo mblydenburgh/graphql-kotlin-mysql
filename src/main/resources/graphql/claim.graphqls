@@ -5,6 +5,7 @@ type Claim {
 }
 
 type Query {
+    getAllClaims: [Claim]!
     getClaimById(id: String!): [Claim]!
 }
 

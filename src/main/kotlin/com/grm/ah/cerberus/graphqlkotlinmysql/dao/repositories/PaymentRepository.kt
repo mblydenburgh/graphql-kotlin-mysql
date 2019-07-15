@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository
 @Repository
 interface PaymentRepository: JpaRepository<Payment,String> {
     fun getPaymentByPaymentNumber(paymentNum: String): List<Payment>
-    fun getPaymentsByClaimId(claimId: String): List<Payment>?
 }

@@ -5,6 +5,7 @@ type Payment {
 }
 
 extend type Query {
+    getAllPayments: [Payment]!
     getPaymentByNumber(num: String!): [Payment]!
     getPaymentsByClaimId(claimId: String): [Payment]
 }
