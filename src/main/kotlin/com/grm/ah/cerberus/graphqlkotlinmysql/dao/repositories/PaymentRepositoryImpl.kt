@@ -24,8 +24,8 @@ class PaymentRepositoryImpl {
         return repository.getPaymentByPaymentNumber(paymentNum = num)
     }
 
-    fun getPaymentByClaimId(claimId: String): List<Payment>? {
-        return repository.getPaymentByClaimId(claimId)
+    fun getPaymentsByClaimId(claimId: String): List<Payment>? {
+        return getAllPayments().filter{ payment -> payment.claimId == claimId }
     }
 
     fun addNewPayment(paymentDto: PaymentDto): Payment {

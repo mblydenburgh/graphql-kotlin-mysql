@@ -16,9 +16,5 @@ data class Payment (
     val claimId: String,
 
     @Column
-    val claimantFullName: String,
-
-    @ManyToOne
-    @JoinColumn(name = "claimId", insertable = false, updatable = false)
-    val claim: Claim? = null
+    val claimantFullName: String
 )

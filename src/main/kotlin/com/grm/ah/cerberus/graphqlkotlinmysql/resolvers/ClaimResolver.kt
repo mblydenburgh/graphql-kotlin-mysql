@@ -9,6 +9,6 @@ import org.springframework.stereotype.Component
 @Component
 class ClaimResolver(private val paymentRepositoryImpl: PaymentRepositoryImpl): GraphQLResolver<Claim> {
     fun payments(claim: Claim,claimId: String): List<Payment>? {
-        return paymentRepositoryImpl.getPaymentByClaimId(claimId)
+        return paymentRepositoryImpl.getAllPayments().filter { payment -> payment.claimId == claimId }
     }
 }

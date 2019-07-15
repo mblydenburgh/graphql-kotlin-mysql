@@ -6,7 +6,7 @@ type Payment {
 
 extend type Query {
     getPaymentByNumber(num: String!): [Payment]!
-    getPaymentByClaimId(claimId: String): [Payment]!
+    getPaymentsByClaimId(claimId: String): [Payment]
 }
 
 type Mutation {
