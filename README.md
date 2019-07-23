@@ -94,44 +94,45 @@ schema files
 - To test your GraphQL API, navigate to http://localhost:8080/graphiql
     - You will be able to write GraphQL queries and mutations from this dashboard
     - There is also a view of the queries and mutations available on the API from this dashboard
-- Exmaples queries/mutations:
+- Examples queries/mutations:
 ```
-
-mutation{
-  newClaim(claimId:"C1234", lossDate:"07-13-2019"){
-    lossDate: lossDate,
-    claimId: claimId
+mutation {
+  newClaim(claimId:"C1234", lossDate:"07-13-2019") {
+    lossDate
+    claimId
   }  
-  addNewPayment(paymentNum:"P1234",claimId:"C1234",claimantFullName:"Billy Bob"){
-    paymentNumber: paymentNumber,
-    claimId: claimId,
-    claimantFullName: claimantFullName
+  
+  addNewPayment(paymentNum:"P1234",claimId:"C1234",claimantFullName:"Billy Bob") {
+    paymentNumber
+    claimId
+    claimantFullName
   }
+  
+  removePayment(paymentNum:"P1234")
 }
   
-query{
-  getAllClaims{
+query 
+  getAllClaims {
       claimId
       lossDate
     }
     
-    getAllPayments{
+    getAllPayments {
       paymentNumber
       claimantFullName
     }
     
-    getClaimById(id:"C1234"){
+    getClaimById(id:"C1234") {
         claimId
         lossDate
-        payments{
+        payments {
           paymentNumber
           claimantFullName
         }
-      }
+    }
 
-    getPaymentsByClaimId(claimId:"C1234"){
+    getPaymentsByClaimId(claimId:"C1234") {
        paymentNumber
     }
 }
-  
 ```
