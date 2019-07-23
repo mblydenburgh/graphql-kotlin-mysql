@@ -121,11 +121,13 @@ query{
     }
     
     getClaimById(id:"C1234"){
-      lossDate
-      payments(claimId:"C1234"){
-        paymentNumber
+        claimId
+        lossDate
+        payments{
+          paymentNumber
+          claimantFullName
+        }
       }
-    }
 
     getPaymentsByClaimId(claimId:"C1234"){
        paymentNumber
