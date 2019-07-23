@@ -1,4 +1,4 @@
-# Graphql-Kotlin-MySQL
+# GraphQL-Kotlin-MySQL
 A demo showing how to set up a GraphQL API backed by Liquibase + MySQL. This is a work in progress and is a product of my learning. Hopefully it it helpful to others trying to accomplish the same!
 
 NoSQL more your thing? Check out a [MongoDB demo!](https://github.com/mikebly/graphql-kotlin-mongo)
