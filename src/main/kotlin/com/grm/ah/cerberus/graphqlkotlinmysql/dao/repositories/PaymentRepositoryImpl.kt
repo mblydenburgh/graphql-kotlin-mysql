@@ -34,10 +34,8 @@ class PaymentRepositoryImpl {
         return repository.save(newPayment)
     }
 
-//    @Transactional
     fun removePayment(paymentNum: String): Int {
         return repository.deleteByPaymentNumber(paymentNum)
-//        return repository.deleteById(id)
     }
 
     fun mapDtoToPayment(dto: PaymentDto): Payment {
