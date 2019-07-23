@@ -1,7 +1,7 @@
 type Claim {
     claimId: String!
     lossDate: String!
-    payments(claimId: String!): [Payment]
+    payments(claimId: String): [Payment]
 }
 
 type Query {
