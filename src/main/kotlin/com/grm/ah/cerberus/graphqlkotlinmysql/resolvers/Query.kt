@@ -20,7 +20,7 @@ class Query(
         return paymentRepositoryImpl.getPaymentByNumber(num = num)
     }
 
-    fun getPaymentsByClaimId(claimId: String): List<Payment>? {
+    fun getPaymentsByClaimId(claimId: String): List<Payment?> {
         return paymentRepositoryImpl.getPaymentsByClaimId(claimId)
     }
 
