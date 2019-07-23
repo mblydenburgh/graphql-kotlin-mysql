@@ -8,6 +8,7 @@ import com.grm.ah.cerberus.graphqlkotlinmysql.dao.repositories.PaymentRepository
 import com.grm.ah.cerberus.graphqlkotlinmysql.dto.ClaimDto
 import com.grm.ah.cerberus.graphqlkotlinmysql.dto.PaymentDto
 import org.springframework.stereotype.Component
+import org.springframework.transaction.annotation.Transactional
 
 @Component
 class Mutation(
@@ -21,6 +22,10 @@ class Mutation(
             claimantFullName = claimantFullName
         )
         return paymentRepositoryImpl.addNewPayment(newPaymentDto)
+    }
+
+    fun removePayment(paymentNum: String): Int {
+        return paymentRepositoryImpl.removePayment(paymentNum = paymentNum)
     }
 
     fun newClaim(claimId: String, lossDate: String): Claim {

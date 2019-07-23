@@ -12,6 +12,5 @@ class ClaimResolver(private val paymentRepositoryImpl: PaymentRepositoryImpl): G
         return if (claimId != null) {
             paymentRepositoryImpl.getPaymentsByClaimId(claimId)
         } else paymentRepositoryImpl.getPaymentsByClaimId(claim.claimId)
-//        return paymentRepositoryImpl.getAllPayments().filter { payment -> payment.claimId == claimId }
     }
 }

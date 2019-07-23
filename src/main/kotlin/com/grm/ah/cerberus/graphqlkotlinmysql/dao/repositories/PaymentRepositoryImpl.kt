@@ -6,6 +6,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
+import org.springframework.transaction.annotation.Transactional
 
 @Component
 class PaymentRepositoryImpl {
@@ -33,8 +34,10 @@ class PaymentRepositoryImpl {
         return repository.save(newPayment)
     }
 
-    fun removePayment(id: String) {
-        return repository.deleteById(id)
+//    @Transactional
+    fun removePayment(paymentNum: String): Int {
+        return repository.deleteByPaymentNumber(paymentNum)
+//        return repository.deleteById(id)
     }
 
     fun mapDtoToPayment(dto: PaymentDto): Payment {
