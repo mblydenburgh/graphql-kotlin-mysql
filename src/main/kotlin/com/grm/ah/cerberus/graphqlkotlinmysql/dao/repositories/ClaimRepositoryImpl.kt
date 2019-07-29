@@ -21,7 +21,7 @@ class ClaimRepositoryImpl {
         return repository.findAll()
     }
 
-    fun getClaimById(id: String): List<Claim> {
+    fun getClaimById(id: String): Claim {
         return repository.findClaimByClaimId(claimId = id)
     }
 

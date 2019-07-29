@@ -28,7 +28,7 @@ class Query(
         return claimRepositoryImpl.getAllClaims()
     }
 
-    fun getClaimById(id: String): List<Claim> {
+    fun getClaimById(id: String): Claim {
         return claimRepositoryImpl.getClaimById(id = id)
     }
 }
