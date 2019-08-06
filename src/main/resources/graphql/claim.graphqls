@@ -6,7 +6,7 @@ type Claim {
 
 type Query {
     getAllClaims: [Claim]!
-    getClaimById(id: String!): Claim!
+    getClaimById(id: String!): Claim
 }
 
 extend type Mutation {
