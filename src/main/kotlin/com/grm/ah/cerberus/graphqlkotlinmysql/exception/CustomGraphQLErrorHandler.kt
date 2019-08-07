@@ -7,7 +7,7 @@
 //
 //@Component
 //class CustomGraphQLErrorHandler: GraphQLErrorHandler {
-//    override fun processErrors(errors: MutableList<GraphQLError>?): MutableList<GraphQLError> {
+//    override fun processErrors(errors: MutableList<GraphQLError>?): MutableList<GenericGraphQLError> {
 //        return errors?.map { GenericGraphQLError(it.message) } ?. toMutableList() ?: mutableListOf()
 //    }
 //}

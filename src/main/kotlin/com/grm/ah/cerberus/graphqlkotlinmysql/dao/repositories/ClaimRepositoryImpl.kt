@@ -2,7 +2,7 @@ package com.grm.ah.cerberus.graphqlkotlinmysql.dao.repositories
 
 import com.grm.ah.cerberus.graphqlkotlinmysql.dao.entities.Claim
 import com.grm.ah.cerberus.graphqlkotlinmysql.dto.ClaimDto
-import com.grm.ah.cerberus.graphqlkotlinmysql.exception.ClaimNotFoundException
+import com.grm.ah.cerberus.graphqlkotlinmysql.exception.ClaimNotFoundExceptionJava
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -23,7 +23,7 @@ class ClaimRepositoryImpl {
     }
 
     fun getClaimById(id: String): Claim? {
-        return repository.findClaimByClaimId(claimId = id) ?: throw ClaimNotFoundException(id)
+        return repository.findClaimByClaimId(claimId = id) ?: throw ClaimNotFoundExceptionJava(id)
     }
 
 
