@@ -8,16 +8,16 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-public class ClaimNotFoundExceptionJava extends RuntimeException implements GraphQLError {
-    private String claimId;
+public class QueryExceptionJava extends RuntimeException implements GraphQLError {
+    private String input;
 
-    public ClaimNotFoundExceptionJava(String claimId) {
-        this.claimId = claimId;
+    public QueryExceptionJava(String input) {
+        this.input = input;
     }
 
     @Override
     public String getMessage() {
-        return "Could not find claim with id: [" + claimId + "]";
+        return "Error querying with parameter: [" + input + "]";
     }
 
     @Override
@@ -32,6 +32,6 @@ public class ClaimNotFoundExceptionJava extends RuntimeException implements Grap
 
     @Override
     public Map<String, Object> getExtensions() {
-        return Collections.singletonMap("claimId", claimId);
+        return Collections.singletonMap("input", input);
     }
 }
