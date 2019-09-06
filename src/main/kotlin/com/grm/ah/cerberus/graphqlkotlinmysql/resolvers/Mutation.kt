@@ -37,6 +37,10 @@ class Mutation(
         return claimRepositoryImpl.removeClaim(claimId = id)
     }
 
+    fun updateClaim(claimId: String, lossDate: String): Claim {
+        return claimRepositoryImpl.updateClaim(claimId = claimId, lossDate = lossDate)
+    }
+
     private fun buildPaymentDto(paymentNum: String, claimId: String, claimantFullName: String): PaymentDto {
         return PaymentDto(
             paymentNumber = paymentNum,

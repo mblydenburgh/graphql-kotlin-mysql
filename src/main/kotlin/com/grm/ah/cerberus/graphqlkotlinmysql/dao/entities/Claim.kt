@@ -13,8 +13,8 @@ data class Claim (
     val claimId: String,
 
     @Column
-    val lossDate: String,
+    var lossDate: String,
 
-    @OneToMany(mappedBy = "claimId")
+    @OneToMany(mappedBy = "claimId", fetch=FetchType.EAGER)
     val payments: List<Payment>? = null
 )

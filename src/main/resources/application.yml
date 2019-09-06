@@ -1,5 +1,8 @@
 server:
   port: 8080
+  jetty:
+    accesslog:
+      time-zone: UTC
 
 # SPRING
 spring:
