@@ -26,13 +26,12 @@ class ClaimRepositoryImpl {
         return repository.findClaimByClaimId(claimId = id)
     }
 
-
     fun addClaim(claimDto: ClaimDto): Claim {
         val newClaim = mapDtoToClaim(claimDto = claimDto)
         return repository.save(newClaim)
     }
 
-    fun removeClaim(claimId: String): Claim {
+    fun removeClaim(claimId: String): Int {
         return repository.deleteClaimByClaimId(claimId = claimId)
     }
 
