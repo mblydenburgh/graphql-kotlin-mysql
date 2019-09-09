@@ -30,4 +30,8 @@
     <changeSet id="refactor-tables" author="n0364359">
         <dropColumn tableName="claims" columnName="paymentNumber" />
     </changeSet>
+<!--    ChangeSet causing issues-->
+<!--    <changeSet author="n0364359 (generated)" id="1568056943483-1" objectQuotingStrategy="QUOTE_ALL_OBJECTS">-->
+<!--        <addForeignKeyConstraint baseColumnNames="claimId" baseTableName="payments" constraintName="FKcwhop40wh0t9uw8sx4warx38s" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="claims"/>-->
+<!--    </changeSet>-->
 </databaseChangeLog>

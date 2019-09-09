@@ -11,6 +11,6 @@ type Query {
 
 extend type Mutation {
     newClaim(claimId: String!, lossDate: String!): Claim!
-    removeClaim(claimId: String!): Claim!
+    removeClaim(claimId: String!): Int
     updateClaim(claimId: String!, lossDate: String!): Claim!
 }

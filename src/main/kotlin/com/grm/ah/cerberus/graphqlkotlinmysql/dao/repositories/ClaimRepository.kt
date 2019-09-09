@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface ClaimRepository: JpaRepository<Claim,String> {
     fun findClaimByClaimId(claimId: String): Claim?
-    fun deleteClaimByClaimId(claimId: String): Claim
+    fun deleteClaimByClaimId(claimId: String): Int
 }

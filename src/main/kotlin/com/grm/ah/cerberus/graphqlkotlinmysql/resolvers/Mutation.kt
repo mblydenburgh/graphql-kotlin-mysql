@@ -33,7 +33,7 @@ class Mutation(
         return claimRepositoryImpl.addClaim(newClaimDto)
     }
 
-    fun removeClaim(id: String): Claim {
+    fun removeClaim(id: String): Int {
         return claimRepositoryImpl.removeClaim(claimId = id)
     }
 

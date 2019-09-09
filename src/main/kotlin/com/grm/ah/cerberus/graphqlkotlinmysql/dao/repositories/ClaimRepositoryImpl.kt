@@ -35,7 +35,7 @@ class ClaimRepositoryImpl {
         return repository.save(newClaim)
     }
 
-    fun removeClaim(claimId: String): Claim {
+    fun removeClaim(claimId: String): Int {
         logger.info("Removing claim by claimId: $claimId")
         return repository.deleteClaimByClaimId(claimId = claimId)
     }
