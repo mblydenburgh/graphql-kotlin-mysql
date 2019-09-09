@@ -15,6 +15,6 @@ data class Claim (
     @Column
     var lossDate: String,
 
-    @OneToMany(mappedBy = "claimId", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "claimId")
     val payments: List<Payment>? = null
 )
