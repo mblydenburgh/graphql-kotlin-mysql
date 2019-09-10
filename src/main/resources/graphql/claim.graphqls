@@ -1,6 +1,8 @@
+scalar DateTime
+
 type Claim {
     claimId: String!
-    lossDate: String!
+    lossDate: DateTime
     payments(claimId: String): [Payment]!
 }
 
