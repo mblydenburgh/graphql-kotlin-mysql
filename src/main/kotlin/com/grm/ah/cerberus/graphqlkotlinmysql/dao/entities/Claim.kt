@@ -5,7 +5,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "claims")
-data class Claim (
+data class Claim(
     @Id
     val id: String = UUID.randomUUID().toString(),
 

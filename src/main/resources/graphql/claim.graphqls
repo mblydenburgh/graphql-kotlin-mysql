@@ -2,7 +2,7 @@ scalar DateTime
 
 type Claim {
     claimId: String!
-    lossDate: DateTime
+    lossDate: DateTime!
     payments(claimId: String): [Payment]!
 }
 
@@ -12,6 +12,6 @@ type Query {
 }
 
 extend type Mutation {
-    newClaim(claimId: String!, lossDate: String!): Claim!
+    newClaim(claimId: String!, lossDate: DateTime!): Claim!
     removeClaim(claimId: String!): Int
 }

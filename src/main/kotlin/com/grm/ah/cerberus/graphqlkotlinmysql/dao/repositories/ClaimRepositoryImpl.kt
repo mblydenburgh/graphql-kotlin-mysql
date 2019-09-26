@@ -7,7 +7,10 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
+import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 @Component
 class ClaimRepositoryImpl {
@@ -36,9 +39,13 @@ class ClaimRepositoryImpl {
     }
 
     fun mapDtoToClaim(claimDto: ClaimDto): Claim {
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd")
         return Claim(
             claimId = claimDto.claimId,
-            lossDate = LocalDateTime.now().toString()
+            lossDate = claimDto.lossDate
+//            lossDate = dateFormat.format(LocalDateTime.now())
         )
     }
+
 }

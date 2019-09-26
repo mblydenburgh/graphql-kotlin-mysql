@@ -4,52 +4,35 @@ import graphql.language.IntValue
 import graphql.language.StringValue
 import java.time.ZoneOffset
 import java.time.Instant
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
 import graphql.schema.Coercing
 import graphql.schema.GraphQLScalarType
 import org.springframework.stereotype.Component
-import java.util.*
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 @Component
 class DateTime: GraphQLScalarType("DateTime","Custom DateTime Scalar", object: Coercing<Any,String> {
     override fun serialize(input: Any): String {
-        //serialize the ZonedDateTime into string on the way out
-        return (input as ZonedDateTime).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+        //serialize the DateTime into string on the way out
+        println("Serializing $input as LocalDate")
+        return input.toString();
     }
 
     override fun parseValue(input: Any): Any {
         return serialize(input);
     }
 
-    override fun parseLiteral(input: Any): ZonedDateTime? {
+    override fun parseLiteral(input: Any): LocalDate? {
+        val dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+        println("Parsing $input")
         //parse the string values coming in
         return when (input) {
-            is StringValue -> ZonedDateTime.parse(input.value)
-            is IntValue -> Instant.ofEpochMilli(input.value.toLong()).atZone(ZoneOffset.UTC)
+            is StringValue -> {
+                println(LocalDate.parse(input.value,dateFormat))
+                LocalDate.parse(input.value,dateFormat)
+            }
+            is IntValue -> Instant.ofEpochMilli(input.value.toLong()).atZone(ZoneOffset.UTC).toLocalDate()
             else -> null
         }
     }
 })
-
-//    var DateTime = GraphQLScalarType("DateTime","Custom DateTime Scalar", object: Coercing<Any,String>{
-//
-//        override fun serialize(input: Any): String {
-//            //serialize the ZonedDateTime into string on the way out
-//            return (input as ZonedDateTime).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
-//        }
-//
-//        override fun parseValue(input: Any): Any {
-//            return serialize(input);
-//        }
-//
-//        override fun parseLiteral(input: Any): ZonedDateTime? {
-//            //parse the string values coming in
-//            return when (input) {
-//                is StringValue -> ZonedDateTime.parse(input.value)
-//                is IntValue -> Instant.ofEpochMilli(input.value.toLong()).atZone(ZoneOffset.UTC)
-//                else -> null
-//            }
-//        }
-//    })
-//}
