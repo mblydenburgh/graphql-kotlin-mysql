@@ -1,0 +1,32 @@
+type Query {
+    allUsers: [User]
+    getUser(id: Int!, username: String): User
+    createUser(username: String!, age: String!, gender: String!): User!
+    updateUser(id: Int, username: String!, age: String!, gender: String!): User!
+    deleteUser(id: Int): Int
+
+    allPosts: [Post]
+    getPost(id: Int!): Post
+    createPost(username: String!, body:String!): Post!
+    updatePost(id: Int!, username: String!, body: String!, publishDate: String!): Post!
+    deletePost(id: Int!): Int
+}
+
+type User {
+    id: ID!
+    username: String!
+    age: Int!
+    gender: Gender
+    posts(username: String!): [Post]
+}
+
+type Post {
+    id: ID!
+    body: String!
+    username: String,
+    publishDate: String!
+}
+
+enum Gender {
+    MALE, FEMALE, OTHER
+}
