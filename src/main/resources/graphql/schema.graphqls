@@ -1,5 +1,5 @@
 type Query {
-    allUsers: [User]
+    allUsers: [User]!
     getUser(id: Int!, username: String): User
     createUser(username: String!, age: String!, gender: String!): User!
     updateUser(id: Int, username: String!, age: String!, gender: String!): User!

@@ -7,7 +7,7 @@
 //
 //import java.util.Collections
 //
-//class ClaimNotFoundException(private val claimId: String, val message: String) : RuntimeException(), GraphQLError {
+//class ClaimNotFoundException(private val claimId: String, override val message: String) : RuntimeException(), GraphQLError {
 //
 //    override fun getMessage(): String {
 //        return "Could not find claim with id: [$claimId]"

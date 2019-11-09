@@ -1,41 +1,28 @@
-//package com.grm.ah.cerberus.graphqlkotlinmysql.resolvers
-//
-//import com.coxautodev.graphql.tools.GraphQLQueryResolver
-//import com.grm.ah.cerberus.graphqlkotlinmysql.dao.entities.Claim
-//import com.grm.ah.cerberus.graphqlkotlinmysql.dao.entities.Payment
-//import com.grm.ah.cerberus.graphqlkotlinmysql.dao.repositories.ClaimRepositoryImpl
-//import com.grm.ah.cerberus.graphqlkotlinmysql.dao.repositories.PaymentRepositoryImpl
-//import com.grm.ah.cerberus.graphqlkotlinmysql.exception.QueryExceptionJava
-//import org.springframework.stereotype.Component
-//
-//@Component
-//class Query(
-//    private val claimRepositoryImpl: ClaimRepositoryImpl,
-//    private val paymentRepositoryImpl: PaymentRepositoryImpl
-//): GraphQLQueryResolver {
-//    fun getAllPayments(): List<Payment>{
-//        return paymentRepositoryImpl.getAllPayments()
-//    }
-//
-//    fun getPaymentByNumber(num: String): List<Payment> {
-//        val paymentsList = paymentRepositoryImpl.getPaymentByNumber(num = num)
-//        return if (paymentsList.isEmpty()) {
-//            throw QueryExceptionJava(num)
-//        } else paymentsList
-//    }
-//
-//    fun getPaymentsByClaimId(claimId: String): List<Payment?>? {
-//        val paymentsList = paymentRepositoryImpl.getPaymentsByClaimId(claimId)
-//        return if (paymentsList.isEmpty()) {
-//            throw QueryExceptionJava(claimId)
-//        } else paymentsList
-//    }
-//
-//    fun getAllClaims(): List<Claim> {
-//        return claimRepositoryImpl.getAllClaims()
-//    }
-//
-//    fun getClaimById(id: String): Claim? {
-//        return claimRepositoryImpl.getClaimById(id = id) ?: throw QueryExceptionJava(id)
-//    }
-//}
+package com.grm.ah.cerberus.graphqlkotlinmysql.resolvers
+
+import com.blydenburgh.kotlineverywhere.dao.entities.User
+import com.blydenburgh.kotlineverywhere.dao.entities.toGender
+import com.coxautodev.graphql.tools.GraphQLQueryResolver
+import com.grm.ah.cerberus.graphqlkotlinmysql.dao.repositories.PostRepository
+import com.grm.ah.cerberus.graphqlkotlinmysql.dao.repositories.UserRepository
+import com.grm.ah.cerberus.graphqlkotlinmysql.exception.QueryExceptionJava
+import org.springframework.data.repository.findByIdOrNull
+import org.springframework.stereotype.Component
+
+@Component
+class Query(
+    private val userRepo: UserRepository
+) : GraphQLQueryResolver {
+    fun getAllUsers(): List<User> {
+        return userRepo.findAll().filterNotNull().toList()
+    }
+
+    fun getUser(id: Int, username: String?): User? {
+        return if (username != null) {
+            userRepo.findUserByUsername(username) ?: throw QueryExceptionJava(username)
+        } else {
+            userRepo.findByIdOrNull<User, Long>(id.toLong()) ?: throw QueryExceptionJava(username)
+        }
+    }
+}
+
